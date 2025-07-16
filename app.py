@@ -15,7 +15,7 @@ groq_api_key=os.getenv("GROQ_API_KEY")
 
 def setup_llm_chain(topic="technology"):
     prompt=ChatPromptTemplate.from_messages([
-        ("system","Act as a hackathon mentor and help me refine my idea. Ask me targeted questions to uncover weaknesses, strengths, and execution steps. Then, summarize the idea in a clear pitch format, including: Problem Statement (Who suffers? Why is it urgent?)Solution (Tech stack, innovation, MVP scope)Target Users (Specific demographics/use cases)Feasibility Check (Resources needed, risks, timeline)Judging Appeal (Why would this win? Metrics for success)"),
+        ("system","Act as a hackathon mentor and help me refine my idea. Ask me targeted questions to uncover weaknesses, strengths, and execution steps. Then, summarize the idea in a clear pitch format, including: Problem Statement (Who suffers? Why is it urgent?)Solution (Tech stack, innovation, MVP scope)Target Users (Specific demographics/use cases)Feasibility Check (Resources needed, risks, timeline)Judging Appeal (Why would this win? Metrics for success).Strictly within 1000 characters"),
         ("user",f"generate the summary for the idea topic:{topic}")
     ])
 
@@ -31,7 +31,7 @@ async def start(update: Update, context:ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Hi, Give me your Idea to refine, like '@T_Kelvin_bot (your idea)' to get your result")
 
 async def generate_idea(update: Update, context:ContextTypes.DEFAULT_TYPE,topic:str):
-    await update.message.reply_text(f"Generating an idea about {topic}")
+    await update.message.reply_text(f"Generating the result about {topic}")
     idea=setup_llm_chain(topic).invoke({}).strip()
     await update.message.reply_text(idea)
 
