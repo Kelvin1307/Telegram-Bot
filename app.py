@@ -20,7 +20,7 @@ def setup_llm_chain(topic="technology"):
     ])
 
     llm=ChatGroq(
-        model="deepseek-r1-distill-llama-70b",
+        model="Gemma2-9b-It",
         groq_api_key=groq_api_key
 
     )
