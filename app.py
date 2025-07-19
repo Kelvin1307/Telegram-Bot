@@ -43,8 +43,8 @@ async def handle_message(update: Update, context:ContextTypes.DEFAULT_TYPE):
         match=re.search(f'@{bot_username}\\s+(.*)',msg)
         if match and match.group(1).strip():
             await generate_idea(update,context,match.group(1).strip())
-        else:
-            await update.message.reply_text("Please specify a topic after mentioning me")
+    else:
+        await update.message.reply_text("Please specify a topic after mentioning me")
 
 
 def main():
